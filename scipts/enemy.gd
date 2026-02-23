@@ -15,7 +15,7 @@ func _process(delta):
 	
 	if abs(position.x - start_position.x) > move_distance:
 		direction *= -1
-		$Visual.scale.x *= -1
+		$EnemysSprite.scale.x *= -1
 
 func _on_body_entered(body):
 	if body.name == "Sonic":

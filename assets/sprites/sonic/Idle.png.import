@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqbnpwrxpd14o"
-path="res://.godot/imported/cangrejo1(1).png-dfc5db7ecb4d9b4403fab589fa804ee2.ctex"
+uid="uid://dcilagox3lpjx"
+path="res://.godot/imported/Idle.png-b36dee9c6e2ecc187a36927c03709f63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/cangrejo1(1).png"
-dest_files=["res://.godot/imported/cangrejo1(1).png-dfc5db7ecb4d9b4403fab589fa804ee2.ctex"]
+source_file="res://assets/sprites/sonic/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-b36dee9c6e2ecc187a36927c03709f63.ctex"]
 
 [params]
 

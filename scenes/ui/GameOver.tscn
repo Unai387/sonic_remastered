@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bbecfsoqxevb"]
+
+[ext_resource type="Script" uid="uid://bweurfiycynvb" path="res://scenes/ui/game_over.gd" id="1_kp3qx"]
+
+[node name="GameOver" type="CanvasLayer" unique_id=1785666473]
+script = ExtResource("1_kp3qx")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1647199016]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="Container" type="VBoxContainer" parent="." unique_id=1896618250]
+offset_left = 220.0
+offset_top = 100.0
+offset_right = 420.0
+offset_bottom = 260.0
+
+[node name="TitleLabel" type="Label" parent="Container" unique_id=593781590]
+layout_mode = 2
+text = "GAME OVER"
+
+[node name="RestartButton" type="Button" parent="Container" unique_id=1275783644]
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="Container" unique_id=291022092]
+layout_mode = 2

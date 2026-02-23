@@ -32,9 +32,9 @@ func _physics_process(delta):
 		
 		# Voltear sprite según dirección
 		if input_direction > 0:
-			$Visual.scale.x = 1
+			$AnimatedSprite2D.scale.x = 1
 		else:
-			$Visual.scale.x = -1
+			$AnimatedSprite2D.scale.x = -1
 	else:
 		# Desacelerar con fricción
 		if is_on_floor():
@@ -52,6 +52,17 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	
 	move_and_slide()
+	
+	# Actualizar animación
+	update_animation()
+
+func update_animation():
+	if not is_on_floor():
+		$AnimatedSprite2D.play("saltar")
+	elif abs(velocity.x) > 10:
+		$AnimatedSprite2D.play("correr")
+	else:
+		$AnimatedSprite2D.play("quieto")
 
 func collect_ring():
 	rings += 1
@@ -64,8 +75,11 @@ func hit():
 		GameManager.lose_rings()
 	else:
 		# Game over
-		die()
+		die()  # ← ESTO FALTABA
 
 func die():
-	# Reiniciar nivel
-	get_tree().reload_current_scene()
+	var game_over_scene = load("res://scenes/ui/GameOver.tscn")
+	var game_over = game_over_scene.instantiate()
+	get_tree().root.add_child(game_over)
+	get_tree().paused = true
+	game_over.process_mode = Node.PROCESS_MODE_ALWAYS

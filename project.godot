@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="SonicRemastered"
-run/main_scene="uid://bgkjecdq3blya"
+run/main_scene="uid://dyiv4wuktm2i8"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
