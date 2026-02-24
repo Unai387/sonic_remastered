@@ -22,3 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://scipts/game_manager.gd"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.5294118, 0.80784315, 0.92156863, 1)

@@ -29,6 +29,10 @@ offset_bottom = 631.0
 layout_mode = 2
 text = "Iniciar"
 
+[node name="Niveles" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Niveles"
+
 [node name="Salir" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Salir"
