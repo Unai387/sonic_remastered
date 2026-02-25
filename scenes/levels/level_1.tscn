@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgkjecdq3blya"]
+[gd_scene load_steps=9 format=3 uid="uid://bgkjecdq3blya"]
 
 [ext_resource type="Texture2D" uid="uid://drxvt43vgpqlb" path="res://assets/sprites/Level1.png" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://de2ka5vj0kd7k" path="res://scenes/player/sonic.tscn" id="2_6iamk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqvuedkgdc0mo" path="res://scenes/objects/enemy.tscn" id="6_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://g6b1ot6kxx8j" path="res://scenes/objects/goal.tscn" id="7_excbq"]
 [ext_resource type="PackedScene" uid="uid://cuc2cwnxphyqb" path="res://scenes/objects/spike.tscn" id="8_iav0o"]
+[ext_resource type="AudioStream" uid="uid://dpeejhqs1p357" path="res://assets/audio/Musica.mp3" id="8_s8va5"]
 
 [node name="Level1" type="Node2D"]
 position = Vector2(2, 0)
@@ -277,3 +278,7 @@ scale = Vector2(1.5, 1.5)
 [node name="Spike13" parent="Objects" instance=ExtResource("8_iav0o")]
 position = Vector2(8217, 1194)
 scale = Vector2(1.5, 1.5)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_s8va5")
+autoplay = true
