@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xc0rl5qeihan"
-path="res://.godot/imported/Level2.png-7f46fe85ed55dd15317f1fbbfffcdd2a.ctex"
+uid="uid://bekyeojaekbna"
+path="res://.godot/imported/Aturdiddo.png-d29936929fe7b947a2de8677bd432d0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Level2.png"
-dest_files=["res://.godot/imported/Level2.png-7f46fe85ed55dd15317f1fbbfffcdd2a.ctex"]
+source_file="res://assets/sprites/Aturdiddo.png"
+dest_files=["res://.godot/imported/Aturdiddo.png-d29936929fe7b947a2de8677bd432d0e.ctex"]
 
 [params]
 

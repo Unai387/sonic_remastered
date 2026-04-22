@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xc0rl5qeihan"
-path="res://.godot/imported/Level2.png-7f46fe85ed55dd15317f1fbbfffcdd2a.ctex"
+uid="uid://c7dk8e3k2oxkg"
+path="res://.godot/imported/derrotado.png-8cac152b14195f88c4011e40f8308852.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Level2.png"
-dest_files=["res://.godot/imported/Level2.png-7f46fe85ed55dd15317f1fbbfffcdd2a.ctex"]
+source_file="res://assets/sprites/derrotado.png"
+dest_files=["res://.godot/imported/derrotado.png-8cac152b14195f88c4011e40f8308852.ctex"]
 
 [params]
 

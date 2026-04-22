@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xc0rl5qeihan"
-path="res://.godot/imported/Level2.png-7f46fe85ed55dd15317f1fbbfffcdd2a.ctex"
+uid="uid://yt0m3a6t304c"
+path="res://.godot/imported/Rueda1.png-f52c8e77f7563c952112646d5307236d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Level2.png"
-dest_files=["res://.godot/imported/Level2.png-7f46fe85ed55dd15317f1fbbfffcdd2a.ctex"]
+source_file="res://assets/sprites/sonic/Rueda1.png"
+dest_files=["res://.godot/imported/Rueda1.png-f52c8e77f7563c952112646d5307236d.ctex"]
 
 [params]
 
