@@ -109,7 +109,11 @@ func soltar_anillos_al_aire():
 	var cantidad = min(rings, 15) # Soltamos máximo 15 para no saturar
 	for i in range(cantidad):
 		var nuevo_ring = RingScene.instantiate()
-		get_parent().add_child(nuevo_ring) # Lo añadimos al nivel
+		
+		# USAMOS CALL_DEFERRED PARA EVITAR EL ERROR
+		# Esto añade el anillo al nivel de forma segura
+		get_parent().call_deferred("add_child", nuevo_ring)
+		
 		nuevo_ring.global_position = global_position
 		
 		# Física de explosión

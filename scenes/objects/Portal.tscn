@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3tugsbt6ctil"]
+
+[ext_resource type="Script" uid="uid://d2eis13rgs6xa" path="res://scenes/levels/portal_boss.gd" id="1_th3qj"]
+[ext_resource type="SpriteFrames" uid="uid://cm7fkxixeuya6" path="res://resources/portal.tres" id="2_4fid7"]
+
+[node name="Portal" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_th3qj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_4fid7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-214.99998, -84.99999, -229.99998, -39.999996, -229.99998, 29.999996, -209.99998, 84.99999, -174.99998, 139.99998, -109.99999, 184.99998, -49.999996, 209.99998, 19.999998, 219.99998, 84.99999, 204.99998, 139.99998, 159.99998, 179.99998, 114.99999, 219.99998, 34.999996, 219.99998, -34.999996, 199.99998, -104.99999, 159.99998, -169.99998, 109.99999, -209.99998, 54.999996, -224.99998, 0, -234.99998, -44.999996, -229.99998, -89.99999, -209.99998, -134.99998, -194.99998, -154.99998, -179.99998, -169.99998, -159.99998, -189.99998, -134.99998)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
