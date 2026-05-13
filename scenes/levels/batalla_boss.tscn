@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://tb7bhp1bj40x"]
+
+[ext_resource type="PackedScene" uid="uid://de2ka5vj0kd7k" path="res://scenes/player/sonic.tscn" id="1_3pra1"]
+[ext_resource type="Script" uid="uid://80tjtmfj5008" path="res://scenes/levels/camera_sonic.gd" id="1_kbv3y"]
+[ext_resource type="Texture2D" uid="uid://cb688725dqidl" path="res://assets/sprites/Niveles/Boss.png" id="1_subxl"]
+[ext_resource type="PackedScene" uid="uid://dh0jb0itp3n7n" path="res://scenes/objects/Boss.tscn" id="2_subxl"]
+
+[node name="BatallaBoss" type="Node2D" unique_id=822267408]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=232028800]
+position = Vector2(521.75006, 164.99997)
+scale = Vector2(1.2783204, 1.1484375)
+texture = ExtResource("1_subxl")
+
+[node name="Platforms" type="Node2D" parent="." unique_id=1639468072]
+
+[node name="GroundMain" type="StaticBody2D" parent="Platforms" unique_id=1150532578]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platforms/GroundMain" unique_id=1921082211]
+position = Vector2(-416, -62)
+polygon = PackedVector2Array(-13, -276, -1, 427, 308, 420, 297, 513, 1609, 537, 1606, 417, 1926, 420, 1913, -283, 2012, 446, 1565, 708, 117, 687, -214, 458)
+
+[node name="Camera2D" type="Camera2D" parent="Platforms" unique_id=113814341]
+position_smoothing_enabled = true
+script = ExtResource("1_kbv3y")
+
+[node name="LimiteCamara" type="Area2D" parent="Platforms" unique_id=532769696]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platforms/LimiteCamara" unique_id=731575015]
+position = Vector2(9, 53)
+polygon = PackedVector2Array(-423, -291, -442, 547, 1504, 529, 1495, -300)
+
+[node name="Entities" type="Node2D" parent="." unique_id=1574875429]
+
+[node name="Sonic" parent="Entities" unique_id=629915489 instance=ExtResource("1_3pra1")]
+position = Vector2(-323, 264)
+scale = Vector2(2, 2)
+
+[node name="Boss" parent="Entities" unique_id=334907226 instance=ExtResource("2_subxl")]
+position = Vector2(860, 293.00003)
+scale = Vector2(2, 2)
