@@ -15,4 +15,4 @@ func complete_level():
 		get_tree().change_scene_to_file(next_level_path)
 	else:
 		# Volver al menú principal o mostrar "Juego Completado"
-		get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/ui/level_complete.tscn")

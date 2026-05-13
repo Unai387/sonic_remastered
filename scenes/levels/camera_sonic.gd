@@ -19,7 +19,6 @@ func _ready():
 		target = get_tree().current_scene.find_child("Sonic", true, false)
 
 	# 3. CONFIGURAR LÍMITES POR POLÍGONO
-	# Buscamos el Area2D que llamaste "LimiteCamara"
 	var muro = get_tree().current_scene.find_child("LimiteCamara", true, false)
 	
 	if muro:
@@ -27,7 +26,6 @@ func _ready():
 		if poligono:
 			var puntos = poligono.polygon
 			if puntos.size() > 0:
-				# Calculamos los extremos del dibujo que hiciste
 				var min_x = puntos[0].x
 				var max_x = puntos[0].x
 				var min_y = puntos[0].y
@@ -39,7 +37,6 @@ func _ready():
 					if p.y < min_y: min_y = p.y
 					if p.y > max_y: max_y = p.y
 				
-				# Aplicamos los límites finales a la cámara
 				limit_left = min_x + muro.global_position.x
 				limit_right = max_x + muro.global_position.x
 				limit_top = min_y + muro.global_position.y
@@ -47,12 +44,16 @@ func _ready():
 				print("Cámara bloqueada por polígono correctamente")
 
 func _process(delta):
-	# 1. SEGUIMIENTO SUAVE
-	if target:
-		# El valor 0.1 es la suavidad; si quieres que sea más rápida, sube a 0.2
-		global_position = lerp(global_position, target.global_position, 0.1)
+	# --- AÑADIDO PARA LA BATALLA DEL BOSS ---
+	# Si la escena se llama BatallaBoss, la cámara se centra en el área y no sigue a Sonic
+	if get_tree().current_scene.name == "batalla_boss.tscn":
+		global_position = Vector2((limit_left + limit_right) / 2, (limit_top + limit_bottom) / 2)
+	else:
+		# 1. SEGUIMIENTO SUAVE (Solo si no es la batalla del boss)
+		if target:
+			global_position = lerp(global_position, target.global_position, 0.1)
 
-	# 2. LÓGICA DEL TEMBLOR
+	# 2. LÓGICA DEL TEMBLOR (Se mantiene activa siempre)
 	if shake_strength > 0:
 		offset = Vector2(
 			randf_range(-shake_strength, shake_strength),
@@ -62,6 +63,5 @@ func _process(delta):
 	else:
 		offset = Vector2.ZERO
 
-# Función para llamar cuando Sonic recibe daño o hay una explosión
 func apply_shake(intensity: float):
 	shake_strength = intensity
