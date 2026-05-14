@@ -10,9 +10,5 @@ func _on_body_entered(body):
 		complete_level()
 
 func complete_level():
-	# Mostrar pantalla de nivel completado
-	if next_level_path != "":
-		get_tree().change_scene_to_file(next_level_path)
-	else:
-		# Volver al menú principal o mostrar "Juego Completado"
-		get_tree().change_scene_to_file("res://scenes/ui/level_complete.tscn")
+	var target = next_level_path if next_level_path != "" else "res://scenes/ui/level_complete.tscn"
+	get_tree().change_scene_to_file(target)

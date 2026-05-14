@@ -36,7 +36,7 @@ size = Vector2(27, 41)
 
 [sub_resource type="Curve2D" id="Curve2D_iav0o"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 5412, 707, 0, 0, 0, 0, 5452, 704, 0, 0, 0, 0, 5485, 700, 0, 0, 0, 0, 5526, 684, 0, 0, 0, 0, 5552, 662, 0, 0, 0, 0, 5567, 642, 0, 0, 0, 0, 5577, 619, 0, 0, 0, 0, 5574, 598, 0, 0, 0, 0, 5570, 577, 0, 0, 0, 0, 5562, 561, 0, 0, 0, 0, 5548, 547, 0, 0, 0, 0, 5542, 545, 0, 0, 0, 0, 5530, 541, 0, 0, 0, 0, 5512, 538, 0, 0, 0, 0, 5492, 539, 0, 0, 0, 0, 5475, 539, 0, 0, 0, 0, 5462, 552, 0, 0, 0, 0, 5445, 566, 0, 0, 0, 0, 5433, 586, 0, 0, 0, 0, 5427, 609, 0, 0, 0, 0, 5432, 630, 0, 0, 0, 0, 5443, 652, 0, 0, 0, 0, 5462, 672, 0, 0, 0, 0, 5493, 692, 0, 0, 0, 0, 5634, 697)
+"points": PackedVector2Array(0, 0, 0, 0, 5412, 707, 0, 0, 0, 0, 5452, 704, 0, 0, 0, 0, 5485, 700, 0, 0, 0, 0, 5528, 690, 0, 0, 0, 0, 5556, 671, 0, 0, 0, 0, 5568, 649, 0, 0, 0, 0, 5573, 621, 0, 0, 0, 0, 5570, 599, 0, 0, 0, 0, 5562, 582, 0, 0, 0, 0, 5558, 575, 0, 0, 0, 0, 5544, 564, 0, 0, 0, 0, 5535, 557, 0, 0, 0, 0, 5519, 552, 0, 0, 0, 0, 5503, 550, 0, 0, 0, 0, 5487, 555, 0, 0, 0, 0, 5486, 556, 0, 0, 0, 0, 5471, 559, 0, 0, 0, 0, 5454, 572, 0, 0, 0, 0, 5440, 585, 0, 0, 0, 0, 5431, 608, 0, 0, 0, 0, 5432, 630, 0, 0, 0, 0, 5443, 652, 0, 0, 0, 0, 5462, 672, 0, 0, 0, 0, 5493, 692, 0, 0, 0, 0, 5634, 697)
 }
 point_count = 25
 
@@ -448,6 +448,7 @@ scale = Vector2(1.5, 1.5)
 [node name="CurvaTuberia" type="Node2D" parent="."]
 
 [node name="Camino1" type="Path2D" parent="CurvaTuberia"]
+position = Vector2(9, -6)
 curve = SubResource("Curve2D_qxy0u")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CurvaTuberia/Camino1"]
@@ -456,7 +457,7 @@ rotation = 0.03569911
 loop = false
 
 [node name="Camino2" type="Path2D" parent="CurvaTuberia"]
-position = Vector2(515, 255)
+position = Vector2(519, 251)
 curve = SubResource("Curve2D_excbq")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CurvaTuberia/Camino2"]
@@ -465,7 +466,7 @@ rotation = 0.03569911
 loop = false
 
 [node name="Camino3" type="Path2D" parent="CurvaTuberia"]
-position = Vector2(513, -256)
+position = Vector2(522, -260)
 curve = SubResource("Curve2D_dga24")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CurvaTuberia/Camino3"]
@@ -498,6 +499,7 @@ shape = SubResource("RectangleShape2D_qxy0u")
 [node name="Looping" type="Node2D" parent="."]
 
 [node name="CaminoLoop" type="Path2D" parent="Looping"]
+position = Vector2(-1, -12)
 curve = SubResource("Curve2D_iav0o")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Looping/CaminoLoop"]
@@ -530,6 +532,7 @@ script = ExtResource("12_iav0o")
 [node name="LimiteCamara" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LimiteCamara"]
+position = Vector2(9, 1)
 polygon = PackedVector2Array(-10, 959, -10, 3, 1750, 3, 3988, 3, 6631, 8, 9055, 8, 10232, 8, 10236, 1271, 8697, 1276, 5888, 1270, 5885, 1024, 2, 1027)
 
 [node name="Area2D" type="Area2D" parent="."]

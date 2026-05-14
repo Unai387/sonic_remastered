@@ -9,6 +9,7 @@ var player = null
 var is_stunned = false
 var is_defeated = false
 var is_attacking = false
+var furia_factor = 1.0
 
 @onready var sprite = $AnimatedSprite
 
@@ -18,14 +19,11 @@ func _ready():
 	$DamageArea.body_entered.connect(_on_damage_player)
 
 func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += 980 * delta
-		
+	if not is_on_floor(): velocity.y += 980 * delta
 	if is_defeated or is_stunned:
 		velocity.x = move_toward(velocity.x, 0, 10)
 	elif not is_attacking:
 		ia_persecucion()
-
 	move_and_slide()
 
 func ia_persecucion():
@@ -33,25 +31,22 @@ func ia_persecucion():
 		var dist = player.global_position.x - global_position.x
 		if abs(dist) < follow_range:
 			sprite.flip_h = dist > 0
-			if abs(dist) < 180:
-				atacar()
+			if abs(dist) < 180: atacar()
 			else:
-				velocity.x = sign(dist) * move_speed
+				velocity.x = sign(dist) * (move_speed * furia_factor)
 				sprite.play("idle")
-		else:
-			velocity.x = 0
+		else: velocity.x = 0
 
 func atacar():
 	if is_attacking: return
 	is_attacking = true
 	velocity.x = 0
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.4 / furia_factor).timeout
 	
 	if not is_defeated and not is_stunned:
 		var dir = 1 if sprite.flip_h else -1
-		velocity.x = dir * attack_speed
+		velocity.x = dir * (attack_speed * furia_factor)
 		await get_tree().create_timer(0.8).timeout
-	
 	is_attacking = false
 
 func _on_head_hit(body):
@@ -62,9 +57,10 @@ func _on_head_hit(body):
 
 func take_damage():
 	health -= 1
+	furia_factor += 0.25
 	is_stunned = true
 	sprite.play("stunned")
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.8).timeout
 	is_stunned = false
 	if health <= 0: defeat()
 
@@ -77,5 +73,4 @@ func defeat():
 
 func _on_damage_player(body):
 	if body.name == "Sonic" and not is_defeated and not is_stunned:
-		if body.has_method("recibir_dano"):
-			body.recibir_dano()
+		if body.has_method("recibir_dano"): body.recibir_dano()
