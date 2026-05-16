@@ -1,7 +1,7 @@
 # Sonic The Hedgehog Remastered
 
 **Autores:** Unai Meneses y Angel Perez
-**Institución:** CFGS Administració de Sistemes Informàtics i Xarxes
+**Institución:** CFGM Sistemes Microinformátics y Xarxes
 **Motor de Desarrollo:** Godot Engine 4.2
 **Lenguaje:** GDScript
 
