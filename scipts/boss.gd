@@ -5,25 +5,41 @@ extends CharacterBody2D
 @export var attack_speed = 450.0
 @export var follow_range = 600.0
 
+# --- ESCENA DE LA BOMBA ---
+@export var escena_bomba: PackedScene 
+
 var player = null
 var is_stunned = false
 var is_defeated = false
 var is_attacking = false
 var furia_factor = 1.0
 
+# --- CONTROLADOR DEL TIEMPO DE BOMBAS (1 SEGUNDO) ---
+var b_timer = 0.0
+
 @onready var sprite = $AnimatedSprite
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	set_physics_process(true)
+	
 	player = get_tree().current_scene.find_child("Sonic", true, false)
 	$HeadHitbox.body_entered.connect(_on_head_hit)
 	$DamageArea.body_entered.connect(_on_damage_player)
 
 func _physics_process(delta):
-	if not is_on_floor(): velocity.y += 980 * delta
+	if not is_on_floor(): 
+		velocity.y += 980 * delta
+		
 	if is_defeated or is_stunned:
 		velocity.x = move_toward(velocity.x, 0, 10)
-	elif not is_attacking:
-		ia_persecucion()
+	else:
+		# Controlamos el disparo de bombas mientras se mueve o ataca
+		manejar_disparo_bombas(delta)
+		
+		if not is_attacking:
+			ia_persecucion()
+			
 	move_and_slide()
 
 func ia_persecucion():
@@ -31,11 +47,13 @@ func ia_persecucion():
 		var dist = player.global_position.x - global_position.x
 		if abs(dist) < follow_range:
 			sprite.flip_h = dist > 0
-			if abs(dist) < 180: atacar()
+			if abs(dist) < 180: 
+				atacar()
 			else:
 				velocity.x = sign(dist) * (move_speed * furia_factor)
 				sprite.play("idle")
-		else: velocity.x = 0
+		else: 
+			velocity.x = 0
 
 func atacar():
 	if is_attacking: return
@@ -48,6 +66,34 @@ func atacar():
 		velocity.x = dir * (attack_speed * furia_factor)
 		await get_tree().create_timer(0.8).timeout
 	is_attacking = false
+
+# --- NUEVA LÓGICA: DISPARAR MIENTRAS SE MUEVE HACIA SONIC ---
+func manejar_disparo_bombas(delta):
+	# Si Eggman está quieto por el golpe (stunned) o derrotado (defeated), NO lanza bombas
+	if is_stunned or is_defeated or player == null: 
+		return
+		
+	# Si no ha recibido el primer golpe (furia_factor es 1.0), tampoco lanza bombas aún
+	if furia_factor <= 1.0: 
+		return
+	
+	b_timer += delta
+	# Espera exactamente 4.0 segundos entre cada lanzamiento
+	if b_timer >= 2.5:
+		b_timer = 0.0 # REINICIAMOS el contador inmediatamente para evitar ráfagas locas
+		lanzar_bomba_teledirigida()
+
+func lanzar_bomba_teledirigida():
+	if escena_bomba == null or player == null: return
+	
+	var bomba = escena_bomba.instantiate()
+	# Aparece justo en el centro de Eggman
+	bomba.global_position = global_position + Vector2(0, 10)
+	get_tree().current_scene.add_child(bomba)
+	
+	# Si tu bomba tiene la función "configurar_direccion", calcula el tiro hacia Sonic
+	if bomba.has_method("configurar_direccion"):
+		bomba.configurar_direccion(player.global_position)
 
 func _on_head_hit(body):
 	if body.name == "Sonic" and not is_stunned and not is_defeated:

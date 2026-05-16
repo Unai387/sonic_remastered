@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://7wxx4dvk5tdh"]
+
+[ext_resource type="Texture2D" uid="uid://bojwltsbkc6b4" path="res://assets/sprites/Boss/bomba.png" id="1_7gnrr"]
+[ext_resource type="Script" uid="uid://ucw2xbws6xa7" path="res://scenes/levels/bomba.gd" id="1_7jb5n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7jb5n"]
+
+[node name="Bomba" type="Area2D"]
+script = ExtResource("1_7jb5n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.500002, -0.8500011)
+scale = Vector2(0.10383387, 0.09632588)
+texture = ExtResource("1_7gnrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_7jb5n")

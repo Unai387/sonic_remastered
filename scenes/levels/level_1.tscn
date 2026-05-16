@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bgkjecdq3blya"]
+[gd_scene load_steps=19 format=3 uid="uid://bgkjecdq3blya"]
 
 [ext_resource type="Texture2D" uid="uid://c126qf12fydf3" path="res://assets/sprites/Niveles/Level1.png" id="1_dga24"]
 [ext_resource type="PackedScene" uid="uid://de2ka5vj0kd7k" path="res://scenes/player/sonic.tscn" id="2_6iamk"]
@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dpeejhqs1p357" path="res://assets/audio/Musica.mp3" id="8_s8va5"]
 [ext_resource type="PackedScene" uid="uid://dj3qcnfcsuq4d" path="res://scenes/objects/OneWayPlatform.tscn" id="9_dga24"]
 [ext_resource type="Script" uid="uid://dc44rc1r7gyp3" path="res://scenes/levels/trigger_looping.gd" id="9_excbq"]
-[ext_resource type="Script" uid="uid://2iotx2m0v7ur" path="res://scenes/objects/goal.gd" id="12_dnkej"]
+[ext_resource type="PackedScene" uid="uid://g6b1ot6kxx8j" path="res://scenes/objects/goal.tscn" id="12_dnkej"]
 [ext_resource type="Script" uid="uid://80tjtmfj5008" path="res://scenes/levels/camera_sonic.gd" id="12_iav0o"]
 
 [sub_resource type="Curve2D" id="Curve2D_qxy0u"]
@@ -42,9 +42,6 @@ point_count = 25
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_excbq"]
 size = Vector2(27.5, 184.84375)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iav0o"]
-size = Vector2(78.5, 309)
 
 [node name="Level1" type="Node2D"]
 position = Vector2(2, 0)
@@ -535,9 +532,5 @@ script = ExtResource("12_iav0o")
 position = Vector2(9, 1)
 polygon = PackedVector2Array(-10, 959, -10, 3, 1750, 3, 3988, 3, 6631, 8, 9055, 8, 10232, 8, 10236, 1271, 8697, 1276, 5888, 1270, 5885, 1024, 2, 1027)
 
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("12_dnkej")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(9632, 1061)
-shape = SubResource("RectangleShape2D_iav0o")
+[node name="Goal" parent="." instance=ExtResource("12_dnkej")]
+position = Vector2(9640, 1155)
