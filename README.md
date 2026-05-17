@@ -67,3 +67,4 @@ Per motius de seguretat, Linux bloqueja l'execució de binaris descarregats d'in
 
 ```bash
 chmod +x SonicTheHedgehogRemastered.x86_64
+./SonicTheHedgehogRemastered.x86_64
