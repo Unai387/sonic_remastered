@@ -1,9 +1,8 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bqdopypqt6p50"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://bqdopypqt6p50"]
 
 [ext_resource type="Texture2D" uid="uid://bvepr78jp7131" path="res://assets/sprites/Boss/Volandoo.png" id="1_u102o"]
 [ext_resource type="Texture2D" uid="uid://c7dk8e3k2oxkg" path="res://assets/sprites/Boss/derrotado.png" id="2_m24hp"]
-[ext_resource type="Texture2D" uid="uid://n82uqjey51v6" path="res://assets/sprites/Boss/Caminando.png" id="3_6n0ti"]
-[ext_resource type="Texture2D" uid="uid://bekyeojaekbna" path="res://assets/sprites/Boss/Aturdiddo.png" id="4_tkl62"]
+[ext_resource type="Texture2D" uid="uid://0y16nxxwog5j" path="res://assets/sprites/Boss/Animaciones.png" id="3_rt01i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m24hp"]
 atlas = ExtResource("1_u102o")
@@ -13,9 +12,17 @@ region = Rect2(0, 0, 1024, 1536)
 atlas = ExtResource("2_m24hp")
 region = Rect2(0, 0, 1024, 1536)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rt01i"]
-atlas = ExtResource("3_6n0ti")
-region = Rect2(0, 0, 1024, 1536)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n0ti"]
+atlas = ExtResource("3_rt01i")
+region = Rect2(15, 0, 149, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkl62"]
+atlas = ExtResource("3_rt01i")
+region = Rect2(164, 0, 149, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2jtc"]
+atlas = ExtResource("3_rt01i")
+region = Rect2(327, 0, 95, 408)
 
 [resource]
 animations = [{
@@ -37,7 +44,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rt01i")
+"texture": SubResource("AtlasTexture_6n0ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkl62")
 }],
 "loop": true,
 "name": &"idle",
@@ -45,7 +55,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_tkl62")
+"texture": SubResource("AtlasTexture_h2jtc")
 }],
 "loop": false,
 "name": &"stunned",

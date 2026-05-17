@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tb7bhp1bj40x"]
+[gd_scene load_steps=10 format=3 uid="uid://tb7bhp1bj40x"]
 
 [ext_resource type="PackedScene" uid="uid://de2ka5vj0kd7k" path="res://scenes/player/sonic.tscn" id="1_3pra1"]
 [ext_resource type="Script" uid="uid://80tjtmfj5008" path="res://scenes/levels/camera_sonic.gd" id="1_kbv3y"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dh0jb0itp3n7n" path="res://scenes/objects/Boss.tscn" id="2_subxl"]
 [ext_resource type="PackedScene" uid="uid://7wxx4dvk5tdh" path="res://scenes/levels/Bomba.tscn" id="3_kik1p"]
 [ext_resource type="PackedScene" uid="uid://j5ujxb7icetc" path="res://scenes/ui/hud.tscn" id="5_sqg3q"]
+[ext_resource type="AudioStream" uid="uid://dpeejhqs1p357" path="res://assets/audio/Musica.mp3" id="7_7f778"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_subxl"]
 size = Vector2(20, 659)
@@ -41,7 +42,7 @@ shape = SubResource("RectangleShape2D_kbv3y")
 
 [node name="Boss" parent="." instance=ExtResource("2_subxl")]
 position = Vector2(1160, 642)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(10, 10)
 escena_bomba = ExtResource("3_kik1p")
 
 [node name="Sonic" parent="." instance=ExtResource("1_3pra1")]
@@ -59,3 +60,7 @@ script = ExtResource("1_kbv3y")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LimiteCamara"]
 position = Vector2(0, -2)
 polygon = PackedVector2Array(8, 906, 1520, 909, 1526, 7, 13, 2)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7f778")
+autoplay = true

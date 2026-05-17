@@ -160,7 +160,7 @@ scale = Vector2(0.65625, 1)
 texture = ExtResource("3_qsp8v")
 
 [node name="Sonic" parent="." instance=ExtResource("2_8qukl")]
-position = Vector2(72, 243)
+position = Vector2(7590, 1009)
 
 [node name="Hud" parent="." instance=ExtResource("3_3p04p")]
 
@@ -438,7 +438,7 @@ script = ExtResource("11_nt80m")
 [node name="LimiteCamara" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LimiteCamara"]
-position = Vector2(-10, -11)
+position = Vector2(-111, 2015)
 polygon = PackedVector2Array(20, 951, 21, 16, 1750, 3, 3988, 3, 6631, 8, 8435, 9, 8431, 1011, 8171, 1019, 8168, 1516, 5649, 1530, 5640, 1253, 5400, 1270, 5383, 1013, 4065, 1016, 4079, 1255, 1, 1275)
 
 [node name="CurvaTuberia" type="Node2D" parent="."]
