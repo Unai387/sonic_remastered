@@ -1,16 +1,15 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://bqdopypqt6p50"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bqdopypqt6p50"]
 
 [ext_resource type="Texture2D" uid="uid://bvepr78jp7131" path="res://assets/sprites/Boss/Volandoo.png" id="1_u102o"]
-[ext_resource type="Texture2D" uid="uid://c7dk8e3k2oxkg" path="res://assets/sprites/Boss/derrotado.png" id="2_m24hp"]
 [ext_resource type="Texture2D" uid="uid://0y16nxxwog5j" path="res://assets/sprites/Boss/Animaciones.png" id="3_rt01i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m24hp"]
 atlas = ExtResource("1_u102o")
 region = Rect2(0, 0, 1024, 1536)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u102o"]
-atlas = ExtResource("2_m24hp")
-region = Rect2(0, 0, 1024, 1536)
+[sub_resource type="AtlasTexture" id="AtlasTexture_82a1j"]
+atlas = ExtResource("3_rt01i")
+region = Rect2(429, 204, 183, 204)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6n0ti"]
 atlas = ExtResource("3_rt01i")
@@ -36,7 +35,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u102o")
+"texture": SubResource("AtlasTexture_82a1j")
 }],
 "loop": false,
 "name": &"defeated",

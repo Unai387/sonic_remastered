@@ -426,6 +426,7 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8qukl")
+volume_db = -4.0
 autoplay = true
 
 [node name="Portal" parent="." instance=ExtResource("10_qsp8v")]

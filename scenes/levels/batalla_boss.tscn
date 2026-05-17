@@ -41,7 +41,7 @@ position = Vector2(1548, 343)
 shape = SubResource("RectangleShape2D_kbv3y")
 
 [node name="Boss" parent="." instance=ExtResource("2_subxl")]
-position = Vector2(1160, 642)
+position = Vector2(732, 659.00006)
 scale = Vector2(10, 10)
 escena_bomba = ExtResource("3_kik1p")
 
@@ -58,8 +58,8 @@ script = ExtResource("1_kbv3y")
 [node name="LimiteCamara" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LimiteCamara"]
-position = Vector2(0, -2)
-polygon = PackedVector2Array(8, 906, 1520, 909, 1526, 7, 13, 2)
+position = Vector2(3, 6)
+polygon = PackedVector2Array(8, 906, 1165.085, 908.2958, 1520, 909, 1526, 7, 13, 2)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_7f778")

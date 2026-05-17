@@ -106,6 +106,10 @@ func defeat():
 	sprite.play("defeated")
 	await get_tree().create_timer(4.0).timeout
 	$BodyCollision.set_deferred("disabled", true)
+	
+	# Cambia automáticamente a la escena de victoria al morir el boss
+	get_tree().change_scene_to_file("res://scenes/ui/PantallaVictoria.tscn")
+	
 	queue_free()
 
 func _on_damage_player(body):
