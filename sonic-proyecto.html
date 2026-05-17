@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sonic The Hedgehog Remastered — Projecte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #07090c;
+      --surface:  #0e1520;
+      --border:   rgba(255,210,0,0.15);
+      --yellow:   #ffd200;
+      --blue:     #1a6fd4;
+      --blue-l:   #4d9fff;
+      --red:      #e03030;
+      --white:    #f0f4ff;
+      --muted:    rgba(240,244,255,0.5);
+      --mono:     'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(7,9,12,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: var(--yellow);
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* pixel grid bg */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,210,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,210,0,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    /* bottom fade */
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(transparent, var(--bg));
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(26,111,212,0.15);
+      border: 1px solid rgba(26,111,212,0.4);
+      border-radius: 2px;
+      padding: 6px 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--blue-l);
+      margin-bottom: 28px;
+      position: relative; z-index: 1;
+    }
+    .hero-badge span {
+      width: 6px; height: 6px;
+      background: var(--blue-l);
+      border-radius: 50%;
+      animation: blink 1.4s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(64px, 12vw, 140px);
+      line-height: 0.88;
+      letter-spacing: 4px;
+      position: relative; z-index: 1;
+    }
+    .hero-title .line1 { color: var(--white); display: block; }
+    .hero-title .line2 {
+      color: var(--yellow);
+      display: block;
+      text-shadow: 0 0 40px rgba(255,210,0,0.3);
+    }
+    .hero-title .line3 {
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(255,255,255,0.2);
+      display: block;
+    }
+
+    .hero-sub {
+      margin-top: 24px;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+      position: relative; z-index: 1;
+    }
+    .hero-sub strong { color: var(--white); font-weight: 700; }
+
+    .hero-meta {
+      margin-top: 32px;
+      display: flex; gap: 32px;
+      position: relative; z-index: 1;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .meta-chip {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .meta-chip b { color: var(--yellow); }
+
+    .hero-cta {
+      margin-top: 40px;
+      position: relative; z-index: 1;
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-yellow {
+      background: var(--yellow);
+      color: #000;
+    }
+    .btn-yellow:hover { box-shadow: 0 8px 24px rgba(255,210,0,0.3); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.25);
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.6); }
+
+    /* ── VIDEO SECTION ── */
+    #video {
+      padding: 100px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    /* video embed box */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+    }
+    .video-wrapper iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    /* placeholder shown when no iframe */
+    .video-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent, transparent 38px,
+          rgba(255,210,0,0.03) 38px, rgba(255,210,0,0.03) 40px
+        ),
+        linear-gradient(135deg, #0a1220 0%, #080e18 100%);
+    }
+    .video-placeholder .play-ring {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      border: 2.5px solid var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .video-placeholder .play-ring:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255,210,0,0.4);
+    }
+    .play-ring::after {
+      content: '';
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 13px 0 13px 24px;
+      border-color: transparent transparent transparent var(--yellow);
+      margin-left: 6px;
+    }
+    .video-placeholder p {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* video info tabs */
+    .video-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      margin-top: 32px;
+      gap: 0;
+    }
+    .tab {
+      padding: 12px 24px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      user-select: none;
+    }
+    .tab.active { color: var(--yellow); border-color: var(--yellow); }
+    .tab-content { display: none; padding: 24px 0; }
+    .tab-content.active { display: block; }
+    .tab-content p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 700px;
+    }
+    .tab-content p + p { margin-top: 12px; }
+
+    /* ── ABOUT / PROJECT INFO ── */
+    #proyecto {
+      padding: 100px 24px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .about-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    @media(max-width:768px){ .about-inner { grid-template-columns: 1fr; gap: 48px; } }
+
+    .info-block { margin-bottom: 32px; }
+    .info-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .info-value {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--white);
+    }
+    .info-value.muted { color: var(--muted); font-size: 15px; }
+
+    /* keyword pills */
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 5px 12px;
+      background: rgba(255,210,0,0.08);
+      border: 1px solid rgba(255,210,0,0.2);
+      color: var(--yellow);
+    }
+
+    /* ── OBJECTIVES ── */
+    #objetivos {
+      padding: 100px 24px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .obj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      margin-top: 48px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .obj-card {
+      background: var(--bg);
+      padding: 32px 28px;
+      transition: background 0.25s;
+      position: relative;
+    }
+    .obj-card:hover { background: #0f1a28; }
+    .obj-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,210,0,0.4);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .obj-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .obj-text strong { color: var(--white); }
+
+    /* ── TECH STACK ── */
+    #tecnologia {
+      padding: 100px 24px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .tech-inner { max-width: 1100px; margin: 0 auto; }
+    .tech-row {
+      display: flex; gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .tech-card {
+      flex: 1; min-width: 180px;
+      padding: 28px 24px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .tech-card:hover { border-color: rgba(255,210,0,0.5); transform: translateY(-3px); }
+    .tech-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+    .tech-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .tech-role {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--yellow);
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .tech-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── FEATURES / REQUIREMENTS ── */
+    #funcionalidades { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+
+    .feat-list { margin-top: 48px; display: flex; flex-direction: column; gap: 1px; }
+    .feat-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 0;
+      background: var(--border);
+    }
+    .feat-row > div {
+      background: var(--bg);
+      padding: 20px 24px;
+    }
+    .feat-row:hover > div { background: #0c1520; }
+    .feat-row .feat-id {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--yellow);
+      display: flex; align-items: center;
+    }
+    .feat-row .feat-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      display: flex; align-items: center;
+    }
+    .feat-row .feat-note {
+      font-size: 14px;
+      color: var(--muted);
+      display: flex; align-items: center;
+    }
+    @media(max-width:600px){
+      .feat-row { grid-template-columns: 1fr; }
+      .feat-row .feat-id { display: none; }
+    }
+
+    /* ── TEAM ── */
+    #equipo {
+      padding: 100px 24px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .team-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .team-grid {
+      display: flex; gap: 24px; justify-content: center;
+      margin-top: 48px; flex-wrap: wrap;
+    }
+    .team-card {
+      padding: 36px 40px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      flex: 1; min-width: 220px;
+      text-align: center;
+      transition: border-color 0.25s;
+    }
+    .team-card:hover { border-color: rgba(255,210,0,0.4); }
+    .team-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-l));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      margin: 0 auto 16px;
+    }
+    .team-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .team-role {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--yellow);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer-text {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      line-height: 2;
+    }
+    .footer-text a { color: var(--yellow); text-decoration: none; }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Sonic Remastered</span>
+    <div class="nav-links">
+      <a href="#video">Vídeo</a>
+      <a href="#proyecto">Proyecto</a>
+      <a href="#tecnologia">Tecnología</a>
+      <a href="#equipo">Equipo</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge"><span></span> CFGS · Institut Puig Castellar</div>
+    <h1 class="hero-title">
+      <span class="line1">Sonic The</span>
+      <span class="line2">Hedgehog</span>
+      <span class="line3">Remastered</span>
+    </h1>
+    <p class="hero-sub">
+      Projecte de desenvolupament — remake del clàssic de 1991 construït des de zero amb
+      <strong>Godot Engine 4</strong> i <strong>GDScript</strong>.
+    </p>
+    <div class="hero-meta">
+      <span class="meta-chip">Autors: <b>Unai Meneses & Angel Perez</b></span>
+      <span class="meta-chip">Motor: <b>Godot 4</b></span>
+      <span class="meta-chip">Llicència: <b>CC BY-NC-ND</b></span>
+    </div>
+    <div class="hero-cta">
+      <a href="#video" class="btn btn-yellow">Ver gameplay</a>
+      <a href="#proyecto" class="btn btn-outline">Leer memoria</a>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video">
+    <div class="reveal">
+      <p class="section-eyebrow">// gameplay</p>
+      <h2 class="section-title">El juego<br>en acción</h2>
+      <p class="section-desc">
+        Aquí podéis ver el prototipo funcional desarrollado en Godot 4 — mecánica de movimiento,
+        recogida de anillos, enemigos y sistema de puntuación en tiempo real.
+      </p>
+    </div>
+
+    <!-- ▸ PEGA AQUÍ TU URL DE YOUTUBE O VÍDEO -->
+    <div class="video-wrapper reveal">
+      <!--
+        INSTRUCCIONES:
+        Reemplaza el bloque .video-placeholder de abajo por un iframe de YouTube:
+
+        <iframe
+          src="https://www.youtube.com/embed/TU_VIDEO_ID"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      -->
+      <div class="video-placeholder">
+        <div class="play-ring"></div>
+        <p>INSERTAR VÍDEO DEL GAMEPLAY AQUÍ</p>
+      </div>
+    </div>
+
+    <!-- Tabs de descripción -->
+    <div class="video-tabs reveal">
+      <div class="tab active" onclick="switchTab(this,'tab-desc')">Descripción</div>
+      <div class="tab" onclick="switchTab(this,'tab-mec')">Mecánicas</div>
+      <div class="tab" onclick="switchTab(this,'tab-tec')">Tecnología</div>
+    </div>
+
+    <div id="tab-desc" class="tab-content active reveal">
+      <p>Este vídeo muestra el prototipo funcional de <strong style="color:var(--white)">Sonic The Hedgehog Remastered</strong>, un proyecto de final de grado del CFGS de Administración de Sistemas Informáticos y Redes del Institut Puig Castellar (Santa Coloma de Gramenet).</p>
+      <p>El objetivo era recrear la experiencia del clásico de 1991 con tecnologías modernas, manteniendo las mecánicas originales de velocidad y plataformas 2D, e incorporando gráficos mejorados y controles optimizados para PC.</p>
+    </div>
+    <div id="tab-mec" class="tab-content reveal">
+      <p>El gameplay muestra el sistema de movimiento con <strong style="color:var(--white)">aceleración progresiva</strong>, salto con física real y el <strong style="color:var(--white)">Spin Dash</strong> característico de Sonic. Los anillos se recogen por contacto y se dispersan al recibir daño.</p>
+      <p>También se puede ver la interacción con los enemigos (Buzz Bomber y otro tipo), el sistema de checkpoints y el HUD con contador de anillos, puntuación, tiempo y vides.</p>
+    </div>
+    <div id="tab-tec" class="tab-content reveal">
+      <p>Todo el juego está construido con <strong style="color:var(--white)">Godot Engine 4.2</strong> usando nodos <code style="color:var(--yellow);font-family:var(--mono)">CharacterBody2D</code> para la física del personaje, <code style="color:var(--yellow);font-family:var(--mono)">TileMap</code> para los niveles y un sistema de señales (Observer Pattern) para la comunicación entre componentes.</p>
+      <p>Los sprites y animaciones se han creado con Aseprite y GIMP. El control de versiones se gestiona con Git y GitHub Projects con metodología de sprints.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT / PROYECTO -->
+  <section id="proyecto">
+    <div class="about-inner">
+      <div class="reveal">
+        <p class="section-eyebrow">// resum</p>
+        <h2 class="section-title">Sobre el<br>proyecto</h2>
+        <div class="info-block" style="margin-top:32px">
+          <p class="info-label">Temàtica</p>
+          <p class="info-value muted">Desenvolupament d'una versió remasteritzada de Sonic The Hedgehog adaptada per a ordinador amb tecnologies modernes.</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Objectiu</p>
+          <p class="info-value muted">Crear una experiència nostàlgica per als jugadors originals mentre s'atreu un nou públic. Es mantenen les mecàniques 2D originals incorporant gràfics millorats, animacions més fluides i controls optimitzats.</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Metodologia</p>
+          <p class="info-value muted">Programació orientada a objectes per sprints: moviment i col·lisions → anells i enemics → nivells → UI i àudio.</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Paraules clau</p>
+          <div class="pills">
+            <span class="pill">Sonic</span>
+            <span class="pill">Remasterització</span>
+            <span class="pill">Plataformes 2D</span>
+            <span class="pill">POO</span>
+            <span class="pill">Godot Engine</span>
+            <span class="pill">Interfície d'usuari</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="info-block">
+          <p class="info-label">Autors</p>
+          <p class="info-value">Unai Meneses y Angel Perez</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Centre</p>
+          <p class="info-value muted">Institut Puig Castellar<br>Santa Coloma de Gramenet</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Cicle</p>
+          <p class="info-value muted">CFGS Administració de Sistemes Informàtics i Xarxes</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Pressupost total</p>
+          <p class="info-value" style="color:var(--yellow);font-family:var(--mono);font-size:28px;">0 €</p>
+          <p class="info-value muted" style="font-size:13px;margin-top:4px;">Totes les eines son gratuïtes i de codi obert</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Llicència</p>
+          <p class="info-value muted">Creative Commons BY-NC-ND 3.0 España</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIVOS -->
+  <section id="objetivos">
+    <div class="reveal">
+      <p class="section-eyebrow">// objectius específics</p>
+      <h2 class="section-title">Qué se<br>ha implementado</h2>
+    </div>
+    <div class="obj-grid reveal">
+      <div class="obj-card">
+        <p class="obj-num">OBJ·01</p>
+        <p class="obj-text"><strong>Movimiento del personaje</strong> con aceleración, salto y colisiones precisas.</p>
+      </div>
+      <div class="obj-card">
+        <p class="obj-num">OBJ·02</p>
+        <p class="obj-text"><strong>3 niveles jugables</strong> con distintas temáticas y progresión de dificultad.</p>
+      </div>
+      <div class="obj-card">
+        <p class="obj-num">OBJ·03</p>
+        <p class="obj-text"><strong>Sistema de anillos y puntuación</strong> — recogida, dispersión y contador visible.</p>
+      </div>
+      <div class="obj-card">
+        <p class="obj-num">OBJ·04</p>
+        <p class="obj-text"><strong>Sprites y animaciones</strong> del personaje y enemigos creados con Aseprite.</p>
+      </div>
+      <div class="obj-card">
+        <p class="obj-num">OBJ·05</p>
+        <p class="obj-text"><strong>Efectos de sonido y música</strong> integrados por nivel con Audacity.</p>
+      </div>
+      <div class="obj-card">
+        <p class="obj-num">OBJ·06</p>
+        <p class="obj-text"><strong>Interfaz de usuario</strong> — menú principal, HUD y pantallas Game Over / Victoria.</p>
+      </div>
+      <div class="obj-card">
+        <p class="obj-num">OBJ·07</p>
+        <p class="obj-text"><strong>Control de versiones</strong> con Git/GitHub y documentación actualizada.</p>
+      </div>
+      <div class="obj-card">
+        <p class="obj-num">OBJ·08</p>
+        <p class="obj-text"><strong>60 FPS estables</strong> en ordenadores con especificaciones medias.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section id="tecnologia">
+    <div class="tech-inner">
+      <div class="reveal">
+        <p class="section-eyebrow">// stack tecnològic</p>
+        <h2 class="section-title">Herramientas<br>utilizadas</h2>
+        <p class="section-desc">Todas las herramientas son gratuitas y de código abierto. Coste total del proyecto: 0 €.</p>
+      </div>
+      <div class="tech-row reveal">
+        <div class="tech-card">
+          <span class="tech-icon">🎮</span>
+          <p class="tech-name">Godot 4.2</p>
+          <p class="tech-role">Motor principal</p>
+          <p class="tech-desc">Motor 2D/3D open-source. Optimitzat per a plataformes 2D, físiques i exportació multiplataforma.</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-icon">📝</span>
+          <p class="tech-name">GDScript</p>
+          <p class="tech-role">Lenguaje</p>
+          <p class="tech-desc">Lenguaje propio de Godot. Sintaxis clara, integración perfecta y rendimiento suficiente para 2D.</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-icon">🎨</span>
+          <p class="tech-name">Aseprite</p>
+          <p class="tech-role">Sprites & animación</p>
+          <p class="tech-desc">Editor de pixel art para crear y animar todos los sprites del personaje, enemigos y objetos.</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-icon">🔊</span>
+          <p class="tech-name">Audacity</p>
+          <p class="tech-role">Audio</p>
+          <p class="tech-desc">Edición de efectos de sonido y música para cada nivel del juego.</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-icon">🗂</span>
+          <p class="tech-name">Git + GitHub</p>
+          <p class="tech-role">Control de versiones</p>
+          <p class="tech-desc">Repositorio y gestión de sprints con GitHub Projects usando metodología Kanban.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNCIONALIDADES -->
+  <section id="funcionalidades">
+    <div class="reveal">
+      <p class="section-eyebrow">// requisits funcionals</p>
+      <h2 class="section-title">Qué hace<br>el juego</h2>
+    </div>
+    <div class="feat-list reveal">
+      <div class="feat-row">
+        <div class="feat-id">RF01</div>
+        <div class="feat-name">Movimiento del personaje</div>
+        <div class="feat-note">Aceleración progresiva, salto con física y Spin Dash</div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-id">RF02</div>
+        <div class="feat-name">Sistema de colisiones</div>
+        <div class="feat-note">Superficies, pendientes, rampas y contacto con enemigos</div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-id">RF03</div>
+        <div class="feat-name">Recogida de anillos</div>
+        <div class="feat-note">Dispersión al recibir daño, contador visible en HUD</div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-id">RF04</div>
+        <div class="feat-name">Sistema de enemigos</div>
+        <div class="feat-note">Mínimo 2 tipos de enemigos con IA y patrones de movimiento</div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-id">RF05</div>
+        <div class="feat-name">Niveles jugables</div>
+        <div class="feat-note">2 niveles con temáticas distintas y progresión de dificultad</div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-id">RF06</div>
+        <div class="feat-name">Puntuación</div>
+        <div class="feat-note">Puntos por anillos, enemigos y bonificación por tiempo</div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-id">RF07</div>
+        <div class="feat-name">Interfaz de usuario</div>
+        <div class="feat-note">Menú (Jugar, Opciones, Salir), HUD y pantalla Game Over</div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-id">RF08</div>
+        <div class="feat-name">Audio completo</div>
+        <div class="feat-note">Música de fondo, efectos de sonido (anillos, daño, enemigos) y control de volumen</div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-id">RF09</div>
+        <div class="feat-name">Sistema de vidas</div>
+        <div class="feat-note">3 vidas, vida extra cada 30 anillos, Game Over</div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-id">RF10</div>
+        <div class="feat-name">Checkpoints</div>
+        <div class="feat-note">Puntos de control y respawn desde el último checkpoint</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="equipo">
+    <div class="team-inner">
+      <div class="reveal">
+        <p class="section-eyebrow">// equip</p>
+        <h2 class="section-title">El equipo</h2>
+      </div>
+      <div class="team-grid reveal">
+        <div class="team-card">
+          <div class="team-avatar">UM</div>
+          <p class="team-name">Unai Meneses</p>
+          <p class="team-role">Desenvolupador</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">AP</div>
+          <p class="team-name">Angel Perez</p>
+          <p class="team-role">Desenvolupador</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-text">
+      Sonic The Hedgehog Remastered — Projecte de Desenvolupament<br>
+      CFGS ASIX · Institut Puig Castellar · Santa Coloma de Gramenet<br>
+      <span style="opacity:0.5">Sonic The Hedgehog™ és propietat de SEGA · Fan project sense fins comercials</span><br>
+      Construït amb <a href="https://godotengine.org" target="_blank">Godot Engine 4</a> · Llicència CC BY-NC-ND 3.0
+    </p>
+  </footer>
+
+  <script>
+    // Tab switcher
+    function switchTab(el, id) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
