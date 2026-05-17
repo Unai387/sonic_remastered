@@ -7,9 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg:       #07090c;
+      --bg:        #07090c;
       --surface:  #0e1520;
-      --border:   rgba(255,210,0,0.15);
+      --border:    rgba(255,210,0,0.15);
       --yellow:   #ffd200;
       --blue:     #1a6fd4;
       --blue-l:   #4d9fff;
@@ -227,6 +227,7 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       gap: 16px;
+      text-decoration: none;
       background:
         repeating-linear-gradient(
           0deg,
@@ -259,7 +260,11 @@
       font-family: var(--mono);
       font-size: 11px;
       letter-spacing: 3px;
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+    .video-placeholder:hover p {
+      color: var(--yellow);
     }
 
     /* video info tabs */
@@ -510,7 +515,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <span class="nav-logo">Sonic Remastered</span>
     <div class="nav-links">
@@ -521,7 +525,6 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-badge"><span></span> CFGM · Institut Puig Castellar</div>
     <h1 class="hero-title">
@@ -539,12 +542,11 @@
       <span class="meta-chip">Llicència: <b>CC BY-NC-ND</b></span>
     </div>
     <div class="hero-cta">
-      <a href="#video" class="btn btn-yellow">Jugar</a>
+      <a href="https://unaaaiis.itch.io/sonicremasteredunaiangel" target="_blank" class="btn btn-yellow">Jugar</a>
       <a href="#proyecto" class="btn btn-outline">Leer memoria</a>
     </div>
   </section>
 
-  <!-- VIDEO -->
   <section id="video">
     <div class="reveal">
       <p class="section-eyebrow">// gameplay</p>
@@ -555,25 +557,13 @@
       </p>
     </div>
 
-    <!-- ▸ PEGA AQUÍ TU URL DE YOUTUBE O VÍDEO -->
-    <div class="https://unaaaiis.itch.io/sonicremasteredunaiangel">
-      <!--
-        INSTRUCCIONES:
-        Reemplaza el bloque .video-placeholder de abajo por un iframe de YouTube:
-
-        <iframe
-          src="https://www.youtube.com/embed/TU_VIDEO_ID"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      -->
-      <div class="video-placeholder">
+    <div class="video-wrapper">
+      <a href="https://unaaaiis.itch.io/sonicremasteredunaiangel" target="_blank" class="video-placeholder">
         <div class="play-ring"></div>
         <p>PROBAR JUEGO</p>
-      </div>
+      </a>
     </div>
 
-    <!-- Tabs de descripción -->
     <div class="video-tabs reveal">
       <div class="tab active" onclick="switchTab(this,'tab-desc')">Descripción</div>
       <div class="tab" onclick="switchTab(this,'tab-mec')">Mecánicas</div>
@@ -589,12 +579,11 @@
       <p>También se puede ver la interacción con los enemigos (Buzz Bomber y otro tipo), el sistema de checkpoints y el HUD con contador de anillos, puntuación, tiempo y vides.</p>
     </div>
     <div id="tab-tec" class="tab-content reveal">
-      <p>Todo el juego está construido con <strong style="color:var(--white)">Godot Engine 4.2</strong> usando nodos <code style="color:var(--yellow);font-family:var(--mono)">CharacterBody2D</code> para la física del personaje, <code style="color:var(--yellow);font-family:var(--mono)">TileMap</code> para los niveles y un sistema de señales (Observer Pattern) para la comunicación entre componentes.</p>
+      <p>Todo el juego está construido con <strong style="color:var(--white)">Godot Engine 4.2</strong> usando nodos <code style="color:var(--yellow);font-family:var(--mono)">CharacterBody2D</code> para la física del personaje, <code style="color:var(--yellow);font-family:var(--mono)">TileMap</code> para los niveles y un sistema de señales (Observer Pattern) para la comunicación entre components.</p>
       <p>Los sprites y animaciones se han creado con Aseprite y GIMP. El control de versiones se gestiona con Git y GitHub Projects con metodología de sprints.</p>
     </div>
   </section>
 
-  <!-- ABOUT / PROYECTO -->
   <section id="proyecto">
     <div class="about-inner">
       <div class="reveal">
@@ -651,7 +640,6 @@
     </div>
   </section>
 
-  <!-- OBJECTIVOS -->
   <section id="objetivos">
     <div class="reveal">
       <p class="section-eyebrow">// objectius específics</p>
@@ -693,7 +681,6 @@
     </div>
   </section>
 
-  <!-- TECH -->
   <section id="tecnologia">
     <div class="tech-inner">
       <div class="reveal">
@@ -736,7 +723,6 @@
     </div>
   </section>
 
-  <!-- FUNCIONALIDADES -->
   <section id="funcionalidades">
     <div class="reveal">
       <p class="section-eyebrow">// requisits funcionals</p>
@@ -796,7 +782,6 @@
     </div>
   </section>
 
-  <!-- TEAM -->
   <section id="equipo">
     <div class="team-inner">
       <div class="reveal">
@@ -818,7 +803,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p class="footer-text">
       Sonic The Hedgehog Remastered — Projecte de Desenvolupament<br>
