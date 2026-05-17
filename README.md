@@ -1,69 +1,69 @@
 # Sonic The Hedgehog Remastered
 
-**Autores:** Unai Meneses y Angel Perez
-**Institución:** CFGM Sistemes Microinformátics y Xarxes
-**Motor de Desarrollo:** Godot Engine 4.2
-**Lenguaje:** GDScript
+**Autors:** Unai Meneses i Angel Perez
+**Institució:** CFGM Sistemes Microinformàtics i Xarxes
+**Motor de Desenvolupament:** Godot Engine 4.2
+**Llenguatge:** GDScript
 
 ---
 
-## 1. Descripción del Proyecto
-Este proyecto consiste en una reconstrucción técnica del videojuego Sonic The Hedgehog (1991). El objetivo principal es la implementación de un sistema de físicas preciso basado en los algoritmos originales de aceleración, inercia y fricción, integrándolos en un entorno de desarrollo moderno.
+## 1. Descripció del Projecte
+Aquest projecte consisteix en una reconstrucció tècnica del videojoc Sonic The Hedgehog (1991). L'objectiu principal és la implementació d'un sistema de físiques precís basat en els algorismes originals d'acceleració, inèrcia i fricció, integrant-los en un entorn de desenvolupament modern.
 
-## 2. Especificaciones Técnicas
+## 2. Especificacions Tècniques
 
-### 2.1. Sistema de Físicas y Movimiento
-- **Cinemática del Jugador:** Uso de `CharacterBody2D` para gestionar desplazamientos complejos.
-- **Inercia y Pendientes:** Lógica programada para ajustar la velocidad en función de la inclinación de la superficie y la dirección del movimiento.
-- **Coyote Time y Salto en Pared:** Funcionalidades añadidas para mejorar la precisión del control y la respuesta del personaje.
+### 2.1. Sistema de Físiques i Moviment
+- **Cinemàtica del Jugador:** Ús de `CharacterBody2D` per gestionar desplaçaments complexos.
+- **Inèrcia i Pendents:** Lògica programada per ajustar la velocitat en funció de la inclinació de la superfície i la direcció del moviment.
+- **Coyote Time i Salt a la Paret:** Funcionalitats afegides per millorar la precisió del control i la resposta del personatge.
 
-### 2.2. Gestión de Entidades y Áreas
-- **Sistema de Colisiones:** Detección de daño y recolección de objetos mediante nodos `Area2D`.
-- **Lógica de Anillos:** Implementación de un sistema de dispersión física mediante `call_deferred` para evitar conflictos en el procesamiento de colisiones durante el tiempo de ejecución.
-- **Cámara Dinámica:** Control de encuadre mediante límites definidos por polígonos, incluyendo algoritmos de suavizado y efectos de retroalimentación visual (Screen Shake).
+### 2.2. Gestió d'Entitats i Àrees
+- **Sistema de Col·lisions:** Detecció de dany i recol·lecció d'objectes mitjançant nodes `Area2D`.
+- **Lògica d'Anells:** Implementation d'un sistema de dispersió física mitjançant `call_deferred` per evitar conflictes en el processament de col·lisions durant el temps d'execució.
+- **Càmera Dinàmica:** Control d'enquadrament mitjançant límits definits per polígons, incloent-hi algorismes de suavitzat i efectes de retroalimentació visual (Screen Shake).
 
-### 2.3. Estructura de Escenas
-El proyecto sigue un diseño modular, permitiendo la reutilización de componentes:
-- **Nodos Globales (Singletons):** El `GameManager` centraliza el estado de la partida, incluyendo el conteo de vidas y la persistencia de datos entre niveles.
-- **Transiciones:** Sistema de portales automatizado que gestiona el cambio de escenas y la carga de recursos de forma eficiente.
+### 2.3. Estructura d'Escenes
+El projecte segueix un disseny modular, permetent la reutilització de components:
+- **Nodes Globals (Singletons):** El `GameManager` centralitza l'estat de la partida, incloent-hi el recompte de vides i la persistència de dades entre nivells.
+- **Transicions:** Sistema de portals automatitzat que gestiona el canvi d'escenes i la càrrega de recursos de forma eficient.
 
-## 3. Controles del Sistema
-| Acción | Entrada (Keyboard) |
+## 3. Controls del Sistema
+| Acció | Entrada (Keyboard) |
 | :--- | :--- |
-| Desplazamiento Horizontal | Flechas Direccionales / A - D |
-| Salto / Acción | Barra Espaciadora / Z |
+| Desplaçament Horitzontal | Fletxes Direccionals / A - D |
+| Salt / Acció | Barra Espaiadora / Z |
 | Pausa de Sistema | Esc |
 
-## 4. Estructura de Directorios
-- `/assets`: Recursos binarios, incluyendo texturas, archivos de audio y fuentes.
-- `/scenes`: Archivos `.tscn` que contienen la jerarquía de nodos de niveles y entidades.
-- `/scripts`: Lógica de programación organizada por tipo de objeto.
+## 4. Estructura de Directoris
+- `/assets`: Recursos binaris, incloent-hi textures, fitxers d'àudio i fonts.
+- `/scenes`: Fitxers `.tscn` que contenen la jerarquia de nodes de nivells i entitats.
+- `/scripts`: Lògica de programació organitzada per tipus d'objecte.
 
-## 5. Herramientas Utilizadas
-- **Godot Engine:** Motor principal de desarrollo.
-- **Audacity:** Procesamiento y edición de señales de audio.
-- **GIMP / Aseprite:** Manipulación de activos gráficos y optimización de mapas de bits.
-
----
-
-## 6. Objetivos de Ingeniería
-1. **Fidelidad Funcional:** Replicar el comportamiento mecánico del software original.
-2. **Modularidad:** Diseñar un sistema de escenas independiente que facilite la escalabilidad del proyecto.
-3. **Optimización:** Garantizar un rendimiento estable de 60 FPS mediante la gestión eficiente de nodos y memoria.
+## 5. Eines Utilitzades
+- **Godot Engine:** Motor principal de desenvolupament.
+- **Audacity:** Processament i edició de senyals d'àudio.
+- **GIMP / Aseprite:** Manipulació d'actius gràfics i optimització de mapes de bits.
 
 ---
 
-## 7. Descarga e Instalación en Linux (Ubuntu)
+## 6. Objectius d'Enginyeria
+1. **Fidelitat Funcional:** Replicar el comportament mecànic del programari original.
+2. **Modularitat:** Dissenyar un sistema d'escenes independent que faciliti l'escalabilitat del projecte.
+3. **Optimització:** Garantir un rendiment estable de 60 FPS mitjançant la gestió eficient de nodes i memòria.
 
-El juego cuenta con soporte nativo para sistemas operativos GNU/Linux (probado en Ubuntu 20.04 y 22.04 LTS o superior) gracias a la exportación standalone. No necesitas tener Godot Engine instalado en tu equipo para jugar.
+---
 
-### 1. Descargar el juego
-Puedes descargar el ejecutable optimizado para arquitectura de 64 bits haciendo clic en el siguiente enlace:
+## 7. Descàrrega i Instal·lació en Linux (Ubuntu)
+
+El joc compta amb suport natiu per a sistemes operatius GNU/Linux (provat en Ubuntu 20.04 i 22.04 LTS o superior) gràcies a l'exportació standalone. No necessites tenir Godot Engine instal·lat al teu equip per jugar.
+
+### 1. Descarregar el joc
+Pots descarregar l'executable optimitzat per a arquitectura de 64 bits fent clic en el següent enllaç:
 
 https://drive.google.com/file/d/1efrTt8wcKxEPzZNyN-Tlv6naBktyQSom/view?usp=drive_link
 
-### 2. Otorgar permisos de ejecución
-Por motivos de seguridad, Linux bloquea la ejecución de binarios descargados de internet de forma predeterminada. Abre una terminal en la carpeta donde has guardado el archivo descargado y asígnale permisos de ejecución con el siguiente comando:
+### 2. Atorgar permisos d'execució
+Per motius de seguretat, Linux bloqueja l'execució de binaris descarregats d'internet de forma predeterminada. Obre una terminal a la carpeta on has desat el fitxer descarregat i assigna-li permisos d'execució amb la següent comanda:
 
+```bash
 chmod +x SonicTheHedgehogRemastered.x86_64
-./SonicTheHedgehogRemastered.x86_64
