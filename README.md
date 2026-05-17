@@ -52,3 +52,18 @@ El proyecto sigue un diseño modular, permitiendo la reutilización de component
 3. **Optimización:** Garantizar un rendimiento estable de 60 FPS mediante la gestión eficiente de nodos y memoria.
 
 ---
+
+## 7. Descarga e Instalación en Linux (Ubuntu)
+
+El juego cuenta con soporte nativo para sistemas operativos GNU/Linux (probado en Ubuntu 20.04 y 22.04 LTS o superior) gracias a la exportación standalone. No necesitas tener Godot Engine instalado en tu equipo para jugar.
+
+### 1. Descargar el juego
+Puedes descargar el ejecutable optimizado para arquitectura de 64 bits haciendo clic en el siguiente enlace:
+
+https://drive.google.com/file/d/1efrTt8wcKxEPzZNyN-Tlv6naBktyQSom/view?usp=drive_link
+
+### 2. Otorgar permisos de ejecución
+Por motivos de seguridad, Linux bloquea la ejecución de binarios descargados de internet de forma predeterminada. Abre una terminal en la carpeta donde has guardado el archivo descargado y asígnale permisos de ejecución con el siguiente comando:
+
+chmod +x SonicTheHedgehogRemastered.x86_64
+./SonicTheHedgehogRemastered.x86_64
