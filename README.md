@@ -53,7 +53,19 @@ El projecte segueix un disseny modular, permetent la reutilització de component
 
 ---
 
-## 7. Descàrrega i Instal·lació en Linux (Ubuntu)
+## 7. Descàrrega i Instal·lació en Windows
+
+El joc compta amb suport natiu per a sistemes operatius Windows gràcies a l'exportació. No necessites tenir Godot Engine instal·lat al teu equip per jugar.
+
+### 1. Descarregar el joc
+
+Pots descarregar l'executable optimitzat per a arquitectura de 64 bits fent clic en el següent enllaç:
+
+https://drive.usercontent.google.com/download?id=1_zMZ0HMmHlAmWTKMvxSDI_r_4UooWHGj&export=download&authuser=0
+
+---
+
+## 8. Descàrrega i Instal·lació en Linux (Ubuntu)
 
 El joc compta amb suport natiu per a sistemes operatius GNU/Linux (provat en Ubuntu 20.04 i 22.04 LTS o superior) gràcies a l'exportació standalone. No necessites tenir Godot Engine instal·lat al teu equip per jugar.
 
